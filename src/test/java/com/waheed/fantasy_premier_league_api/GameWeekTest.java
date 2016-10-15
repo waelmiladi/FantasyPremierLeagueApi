@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by waheedelmiladi on 15/10/2016.
@@ -25,6 +25,6 @@ public class GameWeekTest {
     @Test
     public void testGetDeadlineTime() throws ParseException {
         Date deadlineTime = gameWeek.getDeadlineTime();
-        assertEquals(deadlineTime.toString(), "Sat Aug 13 11:30:00 IST 2016");
+        assertEquals(deadlineTime.getTime(), 1471084200000L);
     }
 }
