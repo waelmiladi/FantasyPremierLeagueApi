@@ -8,6 +8,15 @@
   <name>fantasy-premier-league-api</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.2</version>
+    </dependency>
+
+    <!-- Testing -->
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
