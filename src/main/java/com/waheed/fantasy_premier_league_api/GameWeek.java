@@ -8,7 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GameWeek {
@@ -47,6 +49,12 @@ public class GameWeek {
 
     @JsonProperty("is_next")
     private boolean isNext;
+
+    private static ObjectMapper mapper = new ObjectMapper();
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -93,10 +101,48 @@ public class GameWeek {
         return isNext;
     }
 
-    public static GameWeek[] getAll() throws IOException {
-        HttpClient client = new HttpClient();
-        ObjectMapper mapper = new ObjectMapper();
+    public static GameWeek[] getAll(HttpClient client) throws IOException {
         String gameWeeks = client.get(Constants.gameWeeksUrl);
         return mapper.readValue(gameWeeks, GameWeek[].class);
+    }
+
+    public static GameWeek getPrevious(HttpClient client) throws Exception {
+        GameWeek[] gameWeeks = getAll(client);
+        Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isPrevious()).findFirst();
+        if (gameWeek.isPresent()) {
+            return gameWeek.get();
+        } else {
+            throw new Exception("No Game Week found");
+        }
+    }
+
+    public static GameWeek getCurrent(HttpClient client) throws Exception {
+        GameWeek[] gameWeeks = getAll(client);
+        Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isCurrent()).findFirst();
+        if (gameWeek.isPresent()) {
+            return gameWeek.get();
+        } else {
+            throw new Exception("No Game Week found");
+        }
+    }
+
+    public static GameWeek getNext(HttpClient client) throws Exception {
+        GameWeek[] gameWeeks = getAll(client);
+        Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isNext()).findFirst();
+        if (gameWeek.isPresent()) {
+            return gameWeek.get();
+        } else {
+            throw new Exception("No Game Week found");
+        }
+    }
+
+    public static GameWeek findById(HttpClient client, int id) throws Exception {
+        GameWeek[] gameWeeks = getAll(client);
+        Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.getId() == id).findFirst();
+        if (gameWeek.isPresent()) {
+            return gameWeek.get();
+        } else {
+            throw new Exception("No Game Week found where id = " + id);
+        }
     }
 }
