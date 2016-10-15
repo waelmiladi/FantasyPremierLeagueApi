@@ -3,6 +3,9 @@ package com.waheed.fantasy_premier_league_api;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,7 +52,6 @@ public class GameWeek {
         return name;
     }
 
-
     public Date getDeadlineTime() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         return formatter.parse(deadlineTime.replaceAll("Z$", "+0000"));
@@ -89,5 +91,12 @@ public class GameWeek {
 
     public boolean isNext() {
         return isNext;
+    }
+
+    public static GameWeek[] getAll() throws IOException {
+        HttpClient client = new HttpClient();
+        ObjectMapper mapper = new ObjectMapper();
+        String gameWeeks = client.get(Constants.gameWeeksUrl);
+        return mapper.readValue(gameWeeks, GameWeek[].class);
     }
 }
