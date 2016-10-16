@@ -109,40 +109,29 @@ public class GameWeek {
     public static GameWeek getPrevious(HttpClient client) throws Exception {
         GameWeek[] gameWeeks = getAll(client);
         Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isPrevious()).findFirst();
-        if (gameWeek.isPresent()) {
-            return gameWeek.get();
-        } else {
-            throw new Exception("No Game Week found");
-        }
+        return getGameWeek(gameWeek);
     }
 
     public static GameWeek getCurrent(HttpClient client) throws Exception {
         GameWeek[] gameWeeks = getAll(client);
         Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isCurrent()).findFirst();
-        if (gameWeek.isPresent()) {
-            return gameWeek.get();
-        } else {
-            throw new Exception("No Game Week found");
-        }
+        return getGameWeek(gameWeek);
     }
 
     public static GameWeek getNext(HttpClient client) throws Exception {
         GameWeek[] gameWeeks = getAll(client);
         Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.isNext()).findFirst();
-        if (gameWeek.isPresent()) {
-            return gameWeek.get();
-        } else {
-            throw new Exception("No Game Week found");
-        }
+        return getGameWeek(gameWeek);
     }
 
     public static GameWeek findById(HttpClient client, int id) throws Exception {
         GameWeek[] gameWeeks = getAll(client);
         Optional<GameWeek> gameWeek = Arrays.stream(gameWeeks).filter(gw -> gw.getId() == id).findFirst();
-        if (gameWeek.isPresent()) {
-            return gameWeek.get();
-        } else {
-            throw new Exception("No Game Week found where id = " + id);
-        }
+        return getGameWeek(gameWeek);
+    }
+
+    private static GameWeek getGameWeek(Optional<GameWeek> gameWeek) throws Exception {
+        if (gameWeek.isPresent()) return gameWeek.get();
+        throw new Exception("No Game Week found");
     }
 }
