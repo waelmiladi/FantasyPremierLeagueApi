@@ -12,7 +12,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class GameWeekTest {
-
     private String gameWeekJson = "{\"id\":1,\"name\":\"Gameweek 1\",\"deadline_time\":\"2016-08-13T10:30:00Z\",\"average_entry_score\":44,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":719297,\"deadline_time_epoch\":1471084200,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"13 Aug 11:30\",\"highest_score\":104,\"is_previous\":false,\"is_current\":false,\"is_next\":false}";
     private String gameWeeksJson = "[{\"id\":1,\"name\":\"Gameweek 1\",\"deadline_time\":\"2016-08-13T10:30:00Z\",\"average_entry_score\":44,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":719297,\"deadline_time_epoch\":1471084200,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"13 Aug 11:30\",\"highest_score\":104,\"is_previous\":true,\"is_current\":false,\"is_next\":false}," +
             "{\"id\":2,\"name\":\"Gameweek 2\",\"deadline_time\":\"2016-08-19T18:00:00Z\",\"average_entry_score\":57,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":1441962,\"deadline_time_epoch\":1471629600,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"19 Aug 19:00\",\"highest_score\":118,\"is_previous\":false,\"is_current\":true,\"is_next\":false}," +
@@ -30,9 +29,37 @@ public class GameWeekTest {
 
     @Test
     public void testGetDeadlineTime() throws ParseException {
-        Date deadlineTime = gameWeek.getDeadlineTime();
+        assertEquals(gameWeek.getDeadlineTime().getTime(), 1471084200000L);
+    }
 
-        assertEquals(deadlineTime.getTime(), 1471084200000L);
+    @Test
+    public void getAverageEntryScore() throws Exception {
+        assertEquals(gameWeek.getAverageEntryScore(), 44);
+    }
+
+    @Test
+    public void isFinished() throws Exception {
+        assertEquals(gameWeek.isFinished(), true);
+    }
+
+    @Test
+    public void isDataChecked() throws Exception {
+        assertEquals(gameWeek.isDataChecked(), true);
+    }
+
+    @Test
+    public void getHighestScoringEntry() throws Exception {
+        assertEquals(gameWeek.getHighestScoringEntry(), 719297);
+    }
+
+    @Test
+    public void getDeadlineTimeGameOffset() throws Exception {
+        assertEquals(gameWeek.getDeadlineTimeGameOffset(), 3600);
+    }
+
+    @Test
+    public void getHighestScore() throws Exception {
+        assertEquals(gameWeek.getHighestScore(), 104);
     }
 
     @Test
