@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
 import java.util.Optional;
 
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Team {
     @JsonProperty
     private int id;

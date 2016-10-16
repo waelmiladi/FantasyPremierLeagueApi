@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TeamFixtureTest {
-    private String teamFixtureJson = "{\"id\":1,\"is_home\":true,\"month\":2,\"event_day\":3,\"day\":4,\"opponent\":5}";
+    private String teamFixtureJson = TestHelper.loadJsonFile("src/test/java/com/waheed/fantasy_premier_league_api/api-examples/team-fixture.json");
     private TeamFixture teamFixture;
 
     @Before

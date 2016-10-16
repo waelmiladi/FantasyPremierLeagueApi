@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
  */
 public class TeamTest {
     private ObjectMapper mapper = new ObjectMapper();
-    private String teamJson = "{\"id\":1,\"current_event_fixture\":[{\"is_home\":true,\"month\":10,\"event_day\":1,\"id\":71,\"day\":15,\"opponent\":16}],\"next_event_fixture\":[{\"is_home\":true,\"month\":10,\"event_day\":1,\"id\":81,\"day\":22,\"opponent\":12}],\"name\":\"Arsenal\",\"code\":3,\"short_name\":\"ARS\",\"unavailable\":false,\"strength\":4,\"position\":0,\"played\":0,\"win\":0,\"loss\":0,\"draw\":0,\"points\":0,\"form\":null,\"link_url\":\"\",\"strength_overall_home\":1240,\"strength_overall_away\":1325,\"strength_attack_home\":1200,\"strength_attack_away\":1375,\"strength_defence_home\":1300,\"strength_defence_away\":1315,\"team_division\":1}";
+    private String teamJson = TestHelper.loadJsonFile("src/test/java/com/waheed/fantasy_premier_league_api/api-examples/team.json");
     private Team team = mapper.readValue(teamJson, Team.class);
 
     public TeamTest() throws IOException {
