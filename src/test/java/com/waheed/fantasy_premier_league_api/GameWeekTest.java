@@ -12,10 +12,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class GameWeekTest {
-    private String gameWeekJson = "{\"id\":1,\"name\":\"Gameweek 1\",\"deadline_time\":\"2016-08-13T10:30:00Z\",\"average_entry_score\":44,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":719297,\"deadline_time_epoch\":1471084200,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"13 Aug 11:30\",\"highest_score\":104,\"is_previous\":false,\"is_current\":false,\"is_next\":false}";
-    private String gameWeeksJson = "[{\"id\":1,\"name\":\"Gameweek 1\",\"deadline_time\":\"2016-08-13T10:30:00Z\",\"average_entry_score\":44,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":719297,\"deadline_time_epoch\":1471084200,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"13 Aug 11:30\",\"highest_score\":104,\"is_previous\":true,\"is_current\":false,\"is_next\":false}," +
-            "{\"id\":2,\"name\":\"Gameweek 2\",\"deadline_time\":\"2016-08-19T18:00:00Z\",\"average_entry_score\":57,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":1441962,\"deadline_time_epoch\":1471629600,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"19 Aug 19:00\",\"highest_score\":118,\"is_previous\":false,\"is_current\":true,\"is_next\":false}," +
-            "{\"id\":3,\"name\":\"Gameweek 3\",\"deadline_time\":\"2016-08-27T10:30:00Z\",\"average_entry_score\":42,\"finished\":true,\"data_checked\":true,\"highest_scoring_entry\":3481179,\"deadline_time_epoch\":1472293800,\"deadline_time_game_offset\":3600,\"deadline_time_formatted\":\"27 Aug 11:30\",\"highest_score\":112,\"is_previous\":false,\"is_current\":false, \"is_next\":true}]";
+    private String gameWeekJson = TestHelper.loadJsonFile("src/test/java/com/waheed/fantasy_premier_league_api/api-examples/game-week.json");
+    private String gameWeeksJson = TestHelper.loadJsonFile("src/test/java/com/waheed/fantasy_premier_league_api/api-examples/game-weeks.json");
     private GameWeek gameWeek;
     private HttpClient client = mock(HttpClient.class);
 
