@@ -11,15 +11,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class HttpClient {
-    public String get(String url) throws IOException {
-        HttpGet request = new HttpGet(url);
-        CloseableHttpResponse response = execute(request);
-        return getContent(response);
+
+    private CloseableHttpClient httpClient;
+
+    public HttpClient(CloseableHttpClient httpClient) {
+        this.httpClient = httpClient;
     }
 
-    private CloseableHttpResponse execute(HttpGet request) throws IOException {
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        return httpclient.execute(request);
+    public String get(String url) throws IOException {
+        HttpGet request = new HttpGet(url);
+        CloseableHttpResponse response = httpClient.execute(request);
+        return getContent(response);
     }
 
     private String getContent(CloseableHttpResponse response) throws IOException {
@@ -28,8 +30,6 @@ public class HttpClient {
             HttpEntity entity = response.getEntity();
             content = inputStreamToString(entity.getContent());
             EntityUtils.consume(entity);
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             response.close();
         }
