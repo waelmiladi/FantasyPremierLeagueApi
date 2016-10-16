@@ -1,5 +1,6 @@
 # FantasyPremierLeagueApi
 
+[![CircleCI](https://circleci.com/gh/waelmiladi/FantasyPremierLeagueApi.svg?style=svg)](https://circleci.com/gh/waelmiladi/FantasyPremierLeagueApi)
 [![codecov](https://codecov.io/gh/waelmiladi/FantasyPremierLeagueApi/branch/master/graph/badge.svg)](https://codecov.io/gh/waelmiladi/FantasyPremierLeagueApi)
 
 Base url: https://fantasy.premierleague.com/drf/
