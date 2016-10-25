@@ -20,9 +20,9 @@ Base url: https://fantasy.premierleague.com/drf/
 [/transfers](https://fantasy.premierleague.com/drf/transfers) (requires auth)<br>
 [/entry/{entryId}](https://fantasy.premierleague.com/drf/entry/1)<br>
 [/entries](https://fantasy.premierleague.com/drf/entries) (doesn't work in pre-season?)<br>
-[/my-team/{teamId}](https://fantasy.premierleague.com/drf/my-team/1) (requires auth)<br>
+~~[/my-team/{teamId}](https://fantasy.premierleague.com/drf/my-team/1) (requires auth)<br>
 [/leagues-entered/{teamId}](https://fantasy.premierleague.com/drf/leagues-entered/1) (requires auth)<br>
 [/leagues-classic/{leagueId}](https://fantasy.premierleague.com/drf/leagues-classic/1) (must be a member)<br>
 [/leagues-classic-standings/{leagueId}](https://fantasy.premierleague.com/drf/leagues-classic-standings/1)<br>
 [/leagues-h2h/{leagueId}](https://fantasy.premierleague.com/drf/leagues-h2h/1) (must be a member)<br>
-[/leagues-h2h-standings/{leagueId}](https://fantasy.premierleague.com/drf/leagues-h2h-standings/1)<br>
+[/leagues-h2h-standings/{leagueId}](https://fantasy.premierleague.com/drf/leagues-h2h-standings/1)<br>~~
